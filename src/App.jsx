@@ -450,7 +450,7 @@ function App()
       color: "rgba(255,255,255,.45)",
     }}
   >
-    Music first. Forever.
+    Music first. Always.
   </Typography>
 </Container>
 <Box
