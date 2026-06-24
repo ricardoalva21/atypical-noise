@@ -6,6 +6,8 @@ import {
   Card,
   CardContent,
   Stack,
+  Snackbar,
+Alert,
 } from "@mui/material";
 
 import Grid from "@mui/material/Grid";
@@ -27,6 +29,8 @@ import background from "./assets/fondo.png";
 
 import mobileBackground from "./assets/fondo_movil.png";
 
+import { useState } from "react";
+
 const currentSet = weeklySets.at(-1);
 const topTicker =
   "SOMETHING FOR YOUR MIND, YOUR BODY, AND YOUR SOUL • IT'S THE POWER TO AROUSE CURIOSITY • THE PURPOSE • THE GOAL WHICH ONE ACTS ON • A JOURNEY OF FORCE";
@@ -36,9 +40,11 @@ const bottomTicker =
 function App() 
 
 {
+  const [radioNotice, setRadioNotice] = useState(false);
   return (
     <>
    <Box
+
   component="img"
   src={mobileBackground}
   alt=""
@@ -61,6 +67,38 @@ function App()
     objectPosition: "center",
 
     zIndex: -2,
+    "@keyframes pulse": {
+  "0%": {
+    opacity: 1,
+    transform: "scale(1)",
+  },
+
+  "50%": {
+    opacity: 0.3,
+    transform: "scale(1.25)",
+  },
+
+  "100%": {
+    opacity: 1,
+    transform: "scale(1)",
+  },
+  "@keyframes radioPulse": {
+  "0%": {
+    transform: "scale(1)",
+    opacity: 0.8,
+  },
+
+  "70%": {
+    transform: "scale(3)",
+    opacity: 0,
+  },
+
+  "100%": {
+    transform: "scale(3)",
+    opacity: 0,
+  },
+},
+},
   }}
 />
 
@@ -216,13 +254,13 @@ function App()
         <Box
   sx={{
     textAlign: "center",
-    mb: 6,
+    mb: 3,
   }}
 >
   <Typography
     variant="h3"
     sx={{
-      mb: 3,
+      mb: 2,
       fontSize: {
         xs: "2rem",
         md: "3rem",
@@ -234,21 +272,35 @@ function App()
     MUSIC
   </Typography>
 
+  <Typography
+    sx={{
+      color: "rgba(255,255,255,.35)",
+      fontSize: ".75rem",
+      letterSpacing: ".25em",
+      textTransform: "uppercase",
+      mb: 1.5,
+    }}
+  >
+    Available On
+  </Typography>
+
   <Stack
     direction="row"
-    spacing={3}
+    spacing={2}
     justifyContent="center"
-    sx={{
-      mb: 6,
-    }}
+    alignItems="center"
   >
     <Button
       variant="text"
       href="https://soundcloud.com/atypicalnoise"
       target="_blank"
       sx={{
+        p: 0,
+        minWidth: "auto",
+
         color: "rgba(255,255,255,.75)",
-        letterSpacing: ".12em",
+
+        letterSpacing: ".18em",
 
         "&:hover": {
           color: "#ff5500",
@@ -259,13 +311,25 @@ function App()
       SoundCloud
     </Button>
 
+    <Typography
+      sx={{
+        color: "rgba(255,255,255,.25)",
+      }}
+    >
+      ·
+    </Typography>
+
     <Button
       variant="text"
       href="https://www.youtube.com/@salasinestesia-recordstore"
       target="_blank"
       sx={{
+        p: 0,
+        minWidth: "auto",
+
         color: "rgba(255,255,255,.75)",
-        letterSpacing: ".12em",
+
+        letterSpacing: ".18em",
 
         "&:hover": {
           color: "#ff5500",
@@ -293,7 +357,7 @@ function App()
 >
   <CardContent
     sx={{
-      p: {
+      p: { 
         xs: 2,
         md: 4,
       },
@@ -342,7 +406,147 @@ function App()
   </CardContent>
 </Card>
       </Container>
+<Container
+  maxWidth="md"
+  sx={{
+    pb: {
+      xs: 8,
+      md: 12,
+    },
+  }}
+>
+  <Card
+    sx={{
+      backgroundColor: "rgba(255,255,255,0.04)",
+      backdropFilter: "blur(20px)",
+      border: "1px solid rgba(255,255,255,0.08)",
+      borderRadius: 2,
+      overflow: "hidden",
+      textAlign: "center",
+    }}
+  >
+    <CardContent
+      sx={{
+        py: {
+          xs: 6,
+          md: 8,
+        },
+        px: {
+          xs: 3,
+          md: 6,
+        },
+      }}
+    >
+      <Typography
+        sx={{
+          color: "rgba(255,255,255,.45)",
+          textTransform: "uppercase",
+          letterSpacing: ".25em",
+          fontSize: ".75rem",
+          mb: 2,
+        }}
+      >
+        Transmission 001
+      </Typography>
 
+      <Typography
+  sx={{
+    color: "#ff5500",
+    letterSpacing: ".15em",
+    textTransform: "uppercase",
+    fontSize: ".9rem",
+    mb: 3,
+    fontWeight: 500,
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 1.5,
+  }}
+>
+  <Box
+    component="span"
+    sx={{
+      width: 10,
+      height: 10,
+
+      borderRadius: "50%",
+
+      backgroundColor: "#ff5500",
+
+      position: "relative",
+
+      "&::after": {
+        content: '""',
+
+        position: "absolute",
+
+        inset: 0,
+
+        borderRadius: "50%",
+
+        backgroundColor: "#ff5500",
+
+        animation: "radioPulse 2s infinite",
+      },
+    }}
+  />
+
+  NOW TRANSMITTING
+</Typography>
+
+      <Typography
+        variant="h3"
+        sx={{
+          mb: 3,
+          letterSpacing: ".25em",
+          fontWeight: 300,
+
+          fontSize: {
+            xs: "2rem",
+            md: "3rem",
+          },
+        }}
+      >
+        ATYPICAL RADIO
+      </Typography>
+
+      <Typography
+        sx={{
+          color: "rgba(255,255,255,.65)",
+          maxWidth: 600,
+          mx: "auto",
+          lineHeight: 1.9,
+          mb: 5,
+        }}
+      >
+        Curated underground electronic music,
+        resident podcasts, guest mixes and
+        broadcasts from Costa Rica.
+      </Typography>
+
+      <Button
+  variant="outlined"
+  
+  onClick={() => setRadioNotice(true)}
+  sx={{
+  letterSpacing: ".15em",
+  px: 4,
+
+  transition:
+    "color 1s ease, border-color 1s ease",
+
+  "&:hover": {
+    color: "#ff5500",
+    borderColor: "#ff5500",
+  },
+}}
+>
+  LISTEN NOW
+</Button>
+    </CardContent>
+  </Card>
+</Container>
       {/* RESIDENTS */}
 
       <Container
@@ -568,6 +772,34 @@ function App()
   text={bottomTicker}
   speed={45}
 />
+<Snackbar
+  open={radioNotice}
+  autoHideDuration={5000}
+  onClose={() => setRadioNotice(false)}
+  anchorOrigin={{
+    vertical: "bottom",
+    horizontal: "center",
+  }}
+>
+  <Alert
+    severity="info"
+    onClose={() => setRadioNotice(false)}
+    sx={{
+      backgroundColor: "#111",
+      color: "#fff",
+
+      border: "1px solid rgba(255,255,255,.08)",
+
+      "& .MuiAlert-icon": {
+        color: "#ff5500",
+      },
+    }}
+  >
+    Signal detected.
+
+Broadcast channel currently under construction.
+  </Alert>
+</Snackbar>
     </Box>
     </>
   );
