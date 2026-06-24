@@ -67,38 +67,7 @@ function App()
     objectPosition: "center",
 
     zIndex: -2,
-    "@keyframes pulse": {
-  "0%": {
-    opacity: 1,
-    transform: "scale(1)",
-  },
-
-  "50%": {
-    opacity: 0.3,
-    transform: "scale(1.25)",
-  },
-
-  "100%": {
-    opacity: 1,
-    transform: "scale(1)",
-  },
-  "@keyframes radioPulse": {
-  "0%": {
-    transform: "scale(1)",
-    opacity: 0.8,
-  },
-
-  "70%": {
-    transform: "scale(3)",
-    opacity: 0,
-  },
-
-  "100%": {
-    transform: "scale(3)",
-    opacity: 0,
-  },
-},
-},
+    
   }}
 />
 
@@ -143,6 +112,23 @@ function App()
   sx={{
     position: "relative",
     zIndex: 1,
+
+    "@keyframes radioPulse": {
+      "0%": {
+        transform: "scale(1)",
+        opacity: 0.8,
+      },
+
+      "70%": {
+        transform: "scale(3)",
+        opacity: 0,
+      },
+
+      "100%": {
+        transform: "scale(3)",
+        opacity: 0,
+      },
+    },
   }}
 >
       <Marquee
@@ -478,6 +464,9 @@ function App()
 
       "&::after": {
         content: '""',
+        display: "block",
+        pointerEvents: "none",
+
 
         position: "absolute",
 
